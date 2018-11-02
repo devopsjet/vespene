@@ -20,15 +20,19 @@ services:
       dockerfile: docker/server/Dockerfile
       context: .
     env_file: .env
+    ports:
+      - 8000:8000
   
   worker:
     depends_on:
       - db
       - server
+    links:
+      - "db:db"
     build:
       dockerfile: docker/worker/Dockerfile
       context: .
     env_file: .env
-    
+
 volumes:
   data:

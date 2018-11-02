@@ -28,6 +28,7 @@ ENV GENERATE_SECRET="true"
 ENV CREATE_SUPERUSER="false"
 ENV RUN_MIGRATIONS="true"
 
+EXPOSE 8000
 ENTRYPOINT ["/run.sh"]
 # gunicorn options
 CMD ["--bind", "0.0.0.0:8000"]
