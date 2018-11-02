@@ -14,4 +14,4 @@ __pycache__/
 /env/*
 *.swp
 *.mp4
-
+.env

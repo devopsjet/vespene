@@ -3,5 +3,6 @@ docs
 docker/docker-compose.yml
 .github
 .git
+.env
 README.md
 CONTRIBUTING.md
