@@ -67,3 +67,10 @@ fixme:
 gource:
 	gource -s .06 -1280x720 --auto-skip-seconds .1 --hide mouse,progress,filenames --key --multi-sampling --stop-at-end --file-idle-time 0 --max-files 0  --background-colour 000000 --font-size 22 --title "Vespene" --output-ppm-stream - --output-framerate 30 | avconv -y -r 30 -f image2pipe -vcodec ppm -i - -b 65536K movie.mp4
 
+docker: docker.server docker.worker
+
+docker.server:
+	docker build -t vespene -f ./docker/server/Dockerfile .
+
+docker.worker:
+	docker build -t vespene-worker -f ./docker/worker/Dockerfile .

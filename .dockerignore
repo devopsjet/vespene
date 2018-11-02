@@ -1,0 +1,7 @@
+setup
+docs
+docker/docker-compose.yml
+.github
+.git
+README.md
+CONTRIBUTING.md

@@ -1,0 +1,34 @@
+version: '3'
+
+services: 
+  db:
+    image: postgres
+    volumes:
+      - "data:/var/lib/postgresql/data/pgdata"
+    env_file: .env
+    environment:
+      POSTGRES_USER: "${DB_USER}"
+      POSTGRES_PASSWORD: "${DB_PASSWORD}"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+  
+  server:
+    depends_on:
+      - db
+    links:
+      - "db:db"
+    build:
+      dockerfile: docker/server/Dockerfile
+      context: .
+    env_file: .env
+  
+  worker:
+    depends_on:
+      - db
+      - server
+    build:
+      dockerfile: docker/worker/Dockerfile
+      context: .
+    env_file: .env
+    
+volumes:
+  data:
